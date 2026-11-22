@@ -196,3 +196,19 @@ Retained XFDF source contributors (move-aware blame): Brandon Thomas, Marco Arnu
 `crates/spp-reader/src/png_out/` retains the PNG encoder copied and adapted by TextureCraft from [PiJellyPin/MaterialCraft](https://github.com/PiJellyPin/MaterialCraft), MIT OR Apache-2.0. It entered the reader in [TextureCraft 3c9e01a7](https://github.com/storytold/texturecraft/commit/3c9e01a7), with further changes preserved in the source history. See `crates/spp-reader/NOTICE`.
 
 The reader introduces [sevenz-rust2 0.24.2](https://crates.io/crates/sevenz-rust2/0.24.2) and its [lzma-rust2 0.23.0](https://crates.io/crates/lzma-rust2/0.23.0) dependency by Hasenbanck and the contributors (Apache-2.0), and [hayro-jpeg2000 0.5.0](https://crates.io/crates/hayro-jpeg2000/0.5.0) by the Hayro contributors with [fearless_simd 1.2.0](https://crates.io/crates/fearless_simd/1.2.0) by the Linebender contributors (MIT OR Apache-2.0). All are used as registry dependencies.
+
+## Material graph runtime
+
+`crates/material-graph` moves the graph text format, parser, evaluator, pixel-program compiler, and tests from
+[TextureCraft's SPP importer at 22a37c29](https://github.com/vangel76/texturecraft/tree/22a37c29e98d8e6fc8c5e611e22f0ab95b83243d/crates/graph)
+(MIT OR Apache-2.0). [xilefenko introduced this runtime in TextureCraft](https://github.com/vangel76/texturecraft/commit/af862722be61bd7050ac782ec57a5e8938a5b017),
+adapting code from [PiJellyPin's MaterialCraft](https://github.com/PiJellyPin/MaterialCraft). See the crate's
+`NOTICE` for the original attribution. This extraction retains vangel76's subsequent evaluator and GPU work.
+The format reference and tests are from the same TextureCraft source. The tests' numerical rule tables document
+their provenance in their headers.
+
+`crates/material-graph-wgpu` moves the GPU execution backend, WGSL shaders and GPU comparison tests from
+[TextureCraft's SPP importer at 22a37c29](https://github.com/vangel76/texturecraft/tree/22a37c29e98d8e6fc8c5e611e22f0ab95b83243d/crates/render/src)
+(MIT OR Apache-2.0). The backend extends xilefenko's original importer with graph evaluation work by
+vangel76 and the TextureCraft contributors. The test inputs are the original synthetic graphs and arrays
+from TextureCraft. See the crate's `NOTICE`.
